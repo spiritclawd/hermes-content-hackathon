@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Chaos to Hermes — OpenClaw 2026</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0f;
+      color: #e8e8f0;
+      overflow: hidden;
+    }
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 80px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    h1 { font-size: 3.2rem; font-weight: 700; letter-spacing: -1px; line-height: 1.1; margin-bottom: 24px; }
+    h2 { font-size: 2.4rem; font-weight: 600; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 20px; }
+    h3 { font-size: 1.5rem; font-weight: 500; color: #8b5cf6; margin-bottom: 16px; }
+    p, li { font-size: 1.4rem; line-height: 1.6; color: #a0a0b8; max-width: 900px; }
+    ul { list-style: none; max-width: 900px; }
+    li { margin-bottom: 16px; padding-left: 32px; position: relative; }
+    li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #8b5cf6;
+      font-weight: 600;
+    }
+    .subtitle { font-size: 1.3rem; color: #6b6b8a; margin-top: 8px; }
+    .meta { font-size: 0.9rem; color: #4a4a6a; margin-top: 40px; text-transform: uppercase; letter-spacing: 2px; }
+    .highlight { color: #8b5cf6; font-weight: 600; }
+    .big-number { font-size: 5rem; font-weight: 700; color: #8b5cf6; line-height: 1; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; width: 100%; margin-top: 32px; }
+    .grid-item { background: #12121c; border: 1px solid #1a1a2e; border-radius: 12px; padding: 32px; }
+    .grid-item h4 { font-size: 1.2rem; color: #e8e8f0; margin-bottom: 12px; }
+    .grid-item p { font-size: 1rem; color: #6b6b8a; }
+    .code {
+      background: #0d0d14;
+      border: 1px solid #1a1a2e;
+      border-radius: 8px;
+      padding: 20px 28px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      color: #22c55e;
+      margin: 24px 0;
+    }
+    .qr-placeholder {
+      width: 200px;
+      height: 200px;
+      background: #12121c;
+      border: 2px solid #1a1a2e;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4a4a6a;
+      font-size: 0.9rem;
+      margin-top: 24px;
+    }
+    .nav {
+      position: fixed;
+      bottom: 24px;
+      right: 32px;
+      display: flex;
+      gap: 12px;
+      z-index: 100;
+    }
+    .nav button {
+      background: #1a1a2e;
+      border: 1px solid #2a2a4e;
+      color: #a0a0b8;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-family: inherit;
+    }
+    .nav button:hover { background: #2a2a4e; color: #e8e8f0; }
+    .slide-counter {
+      position: fixed;
+      bottom: 24px;
+      left: 32px;
+      color: #4a4a6a;
+      font-size: 0.85rem;
+      z-index: 100;
+    }
+    .logo { font-size: 1rem; color: #8b5cf6; font-weight: 600; letter-spacing: 2px; margin-bottom: 40px; text-transform: uppercase; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1100px; align-items: center; }
+    .two-col .left { text-align: left; }
+    .two-col .right { text-align: left; }
+    .emoji { font-size: 1.2em; }
+  </style>
+</head>
+<body>
+
+<!-- SLIDE 1: Title -->
+<div class="slide active">
+  <div class="logo">OpenClaw · April 2026</div>
+  <h1>From Chaos to <span class="highlight">Hermes</span></h1>
+  <p class="subtitle">How switching to one agent changed everything<br>— and built a hackathon finalist in 3 weeks.</p>
+  <p class="meta">Carlos de la Figuera · @carldlfr</p>
+</div>
+
+<!-- SLIDE 2: Who -->
+<div class="slide">
+  <h3>Who I Am</h3>
+  <h2>I build at the intersection of<br><span class="highlight">AI + Crypto + Community</span></h2>
+  <ul style="margin-top: 32px;">
+    <li>Full-stack builder — product, sales, ecosystems</li>
+    <li>Previously: scattered across 12+ tools, 4 AIs, 3 cloud providers</li>
+    <li>Now: one laptop, one agent, one brain</li>
+    <li>Everything runs on <span class="highlight">Hermes</span> via Nous Research</li>
+  </ul>
+</div>
+
+<!-- SLIDE 3: The Problem -->
+<div class="slide">
+  <h3>The Problem</h3>
+  <h2>Before Hermes, I was a<br><span class="highlight">tool manager</span>, not a builder.</h2>
+  <div class="grid" style="margin-top: 40px;">
+    <div class="grid-item">
+      <h4>Context Loss</h4>
+      <p>Every session started from zero. Claude didn't remember yesterday. I spent half my time re-explaining.</p>
+    </div>
+    <div class="grid-item">
+      <h4>Tool Sprawl</h4>
+      <p>Cursor, Vercel, Railway, Hostinger, Netlify, GitHub Actions, cron jobs on 3 servers. None talked to each other.</p>
+    </div>
+    <div class="grid-item">
+      <h4>Manual Glue</h4>
+      <p>I was the router. Copy-paste between apps. Check service health by hand. No automation I didn't build myself.</p>
+    </div>
+    <div class="grid-item">
+      <h4>No Swarm</h4>
+      <p>One brain can't do everything. But hiring more AIs meant more accounts, more billing, more fragmentation.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: The Switch -->
+<div class="slide">
+  <h3>The Switch</h3>
+  <h2>One command.<br>One agent.<br>Infinite memory.</h2>
+  <div class="code" style="margin-top: 40px;">
+    curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+  </div>
+  <ul style="margin-top: 32px;">
+    <li><span class="highlight">Persistent memory</span> — every session builds on the last</li>
+    <li><span class="highlight">Skills</span> — 50+ reusable workflows, auto-discovered</li>
+    <li><span class="highlight">Multi-platform</span> — Telegram, CLI, API, cron, all synced</li>
+    <li><span class="highlight">Subagents</span> — spawn parallel workers for complex tasks</li>
+    <li><span class="highlight">Model routing</span> — Kimi K2.6 for speed, Opus for depth, MiMo for cost</li>
+  </ul>
+</div>
+
+<!-- SLIDE 5: Meet Zaia -->
+<div class="slide">
+  <h3>Meet Zaia</h3>
+  <div class="two-col">
+    <div class="left">
+      <h2>My AI co-founder runs<br><span class="highlight">24/7</span> on a dedicated laptop.</h2>
+      <p style="margin-top: 24px;">She's not a chatbot. She's infrastructure.</p>
+    </div>
+    <div class="right">
+      <ul>
+        <li>Manages 8 systemd services</li>
+        <li>Monitors 3 cron health checks</li>
+        <li>Deploys to devnet automatically</li>
+        <li>Generates assets while I sleep</li>
+        <li>Never forgets a conversation</li>
+      </ul>
+    </div>
+  </div>
+  <p class="meta" style="margin-top: 48px;">Claude = code/contracts · Zaia = infra/ops/content</p>
+</div>
+
+<!-- SLIDE 6: Shadow Vault -->
+<div class="slide">
+  <h3>Case Study: Shadow Vault</h3>
+  <h2>Built a <span class="highlight">Solana hackathon finalist</span><br>in 3 weeks with Hermes.</h2>
+  <div class="grid" style="margin-top: 40px;">
+    <div class="grid-item">
+      <h4><span class="emoji">🔐</span> Privacy Commitment</h4>
+      <p>Pedersen commitment scheme for encrypted vaults. Zaia drafted the architecture doc.</p>
+    </div>
+    <div class="grid-item">
+      <h4><span class="emoji">📦</span> SDK Published</h4>
+      <p>@shadow-vault/solana@0.2.0 on npm. CI/CD via Hermes cron jobs.</p>
+    </div>
+    <div class="grid-item">
+      <h4><span class="emoji">🎬</span> Demo Video</h4>
+      <p>Screen-recorded on Zaia's laptop. Auto-uploaded. No manual steps.</p>
+    </div>
+    <div class="grid-item">
+      <h4><span class="emoji">🏆</span> Colosseum Track</h4>
+      <p>$60k pool. Privacy + Encryption category. Solo founder + AI co-builder.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7: Live Stats -->
+<div class="slide">
+  <h3>What Zaia Runs Today</h3>
+  <div style="display: flex; gap: 60px; margin-top: 40px; text-align: center;">
+    <div>
+      <div class="big-number">8</div>
+      <p>systemd services</p>
+    </div>
+    <div>
+      <div class="big-number">3</div>
+      <p>active projects</p>
+    </div>
+    <div>
+      <div class="big-number">42</div>
+      <p>skills loaded</p>
+    </div>
+    <div>
+      <div class="big-number">0</div>
+      <p>manual deploys</p>
+    </div>
+  </div>
+  <p style="margin-top: 48px; text-align: center;">Everything auto-recovers. If a service dies, Zaia restarts it before I know it's gone.</p>
+</div>
+
+<!-- SLIDE 8: The Ecosystem -->
+<div class="slide">
+  <h3>The Hermes Ecosystem</h3>
+  <h2>You're not buying a tool.<br>You're joining a <span class="highlight">garden</span>.</h2>
+  <ul style="margin-top: 32px;">
+    <li>Hermes Atlas — 95 community projects, 172K stars</li>
+    <li>Skills registry — agentskills.io standard, shareable workflows</li>
+    <li>Multi-agent frameworks — swarm orchestration out of the box</li>
+    <li>Nous Research — building the infrastructure, not extracting rent</li>
+  </ul>
+  <p style="margin-top: 32px;">The agent doesn't just answer questions. It <span class="highlight">remembers</span> yours. It learns your projects. It grows with you.</p>
+</div>
+
+<!-- SLIDE 9: Call to Action -->
+<div class="slide">
+  <h3>Call to Action</h3>
+  <h2>Stop managing tools.<br>Start building with <span class="highlight">one brain</span>.</h2>
+  <div class="code" style="margin-top: 40px;">
+    curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+  </div>
+  <p style="margin-top: 32px;">Install. Chat. Watch it remember.<br>Give it a week. You'll forget how you worked before.</p>
+  <div style="margin-top: 40px; text-align: center;">
+    <p style="font-size: 1.1rem; color: #6b6b8a;">hermes-agent.nousresearch.com</p>
+    <p style="font-size: 1.1rem; color: #6b6b8a; margin-top: 8px;">@carldlfr · @nousresearch · #HermesAgent</p>
+  </div>
+</div>
+
+<!-- SLIDE 10: Q&A -->
+<div class="slide">
+  <h1 style="font-size: 4rem;">Thank you.</h1>
+  <p class="subtitle" style="margin-top: 24px;">Questions?</p>
+  <div style="margin-top: 48px; text-align: center;">
+    <p style="font-size: 1.2rem; color: #8b5cf6;">@carldlfr</p>
+    <p style="font-size: 1rem; color: #4a4a6a; margin-top: 8px;">carlos@normalabs.xyz</p>
+    <p style="font-size: 1rem; color: #4a4a6a; margin-top: 4px;">github.com/spiritclawd</p>
+  </div>
+</div>
+
+<div class="slide-counter"><span id="current">1</span> / 10</div>
+<div class="nav">
+  <button onclick="prevSlide()">← Prev</button>
+  <button onclick="nextSlide()">Next →</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function showSlide(n) {
+    slides.forEach((s, i) => s.classList.toggle('active', i === n));
+    document.getElementById('current').textContent = n + 1;
+  }
+
+  function nextSlide() {
+    if (current < slides.length - 1) { current++; showSlide(current); }
+  }
+
+  function prevSlide() {
+    if (current > 0) { current--; showSlide(current); }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+    if (e.key === 'ArrowLeft') prevSlide();
+  });
+</script>
+
+</body>
+</html>
